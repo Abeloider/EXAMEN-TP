@@ -71,14 +71,9 @@ copiar y pegar de las diapositivas*/
 typedef struct Nodo * NodoPtr;          //Esta es la propia estructura que usaremos para referirnos al struct, no var�a
 struct Nodo                             //El tipo estructura creado, no var�a
 {
-    int elem;                        //Esto es del tipo que es la estructura, var�a en el tipo de datos que te puedan pedir (ej: double o int)
+    int elem;                           //Esto es del tipo que es la estructura, var�a en el tipo de datos que te puedan pedir (ej: double o int)
     struct Nodo * sig;                  //Esto es el apuntador a nuestra siguiente estructura, no var�a
 };
-
-
-
-
-
 
 
 
@@ -111,6 +106,8 @@ NodoPtr VectorEnteros(int *v,int n)     //Declaramos un tipo estructura y le pas
     aux->sig = NULL;
     return e;
 }
+
+
 
 /**Que te pidan una estructura que represente un vector en ORDEN CONTRARIO**/
 /*Es pr�cticamente igual que la anterior, solo que esta lo que hace es ponerlo en orden contrario,

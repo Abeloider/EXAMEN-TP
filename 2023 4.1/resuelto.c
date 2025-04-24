@@ -5,7 +5,6 @@
 //Ejercicio 1
 float * crear_array(int n)
 {
-
     float * a=malloc(sizeof(float)*n);
     for (int i=1; i<=n; i++)
     {
@@ -13,7 +12,7 @@ float * crear_array(int n)
     }
     return a;
 }
-5
+
 //Ejercicio 2
 typedef struct EstructuraRep * Estructura;
 struct EstructuraRep
