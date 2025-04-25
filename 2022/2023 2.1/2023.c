@@ -20,7 +20,6 @@ double *concatenar(double *v1, double *v2, int n, int m)
 {
     int i, j;
     double *res = (double *)malloc((n + m) * sizeof(double));
-    
     for(i = 0; i < n; i++)
     {
         res[i] = v1[i];
