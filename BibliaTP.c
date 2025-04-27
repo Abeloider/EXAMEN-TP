@@ -181,24 +181,24 @@ void SuprimePrimerPar(NodoPtr p)                          //Declaramos el proced
         p = p->sig;                                 //Mientras no ocurra lo anterior avanzamos en la cadena
     }
     /**Esta parte es la que est� en las diapositivas, m�s a delante pondr� este caso aislado**/
-    NodoPtr eliminado = p->sig;
-    p->sig = eliminado->sig;
-    free(eliminado);
+    NodoPtr eliminado = p->sig; // guardamos el elemento a eliminar
+    p->sig = eliminado->sig; // lo eliminamo de la lista 
+    free(eliminado); // liberanos la memoria ocupada por el elemento eliminado
 }
 
 /**Elemento eliminado por el final**/
 /*Esto ser� lo mismo que antes, combinaremos el de las diapositivas con el de b�squeda especial, este tambien est� asociado al ejemplo de los pares*/
 void suprime_ultimo_par(NodoPtr e)
 {
-    NodoPtr p = NULL;
+    NodoPtr p = NULL; //inicializamos el puntero a NULL, porque no sabemos si hay pares o no
     while(e->sig!=NULL)
     {
-        if (e->sig->elem%2==0)
-            p = e;
-        e = e->sig
+        if (e->sig->elem%2==0) // comprobamos is el siguiente elemento es par
+            p = e; // guardamos el puntero al elemento anterior
+        e = e->sig // avanzamos en la lista
     }
     if (p!=NULL)
-    {
+    { // eliminamo por el final
         NodoPtr borrar = p->sig;
         p->sig = borrar->sig;
         free(borrar);
@@ -260,6 +260,8 @@ void suprime_todos(NodoPtr l, Elemento dato)
         }
     }
 }
+
+
 /**IMPORTANTE**/ /*En el tipo de ejercicio 4 puede que hayan m�s funciones, pero dudo que vaya a pedirlas, si eso ocurre mirad las diapositivas,
 si no est�n en la parte de los apuntes seguramente est�n en los ejercicios, o si no intentad, a partir del enunciado combinar algunas como ocurre
 con las otras dos*/
@@ -281,14 +283,13 @@ con las otras dos*/
 /*En principio este ejercicio es est�tico, lo que hace es imprimir por pantalla la estructura que hemos creado*/
 void imprime(NodoPtr l)
 {
-    l = l->sig;
-    while (l != NULL)
+    l = l->sig; // eliminanos la cabecera de la lista ya que no querermos imprimirla 
+    while (l != NULL) //  mientra que no llegemos alfinal de la lista 
     {
-        printf("%d\n", l->elem);
-        l = l->sig;
+        printf("%d\n", l->elem); // implimimos el elemento de la lista 
+        l = l->sig; // avanzamos al siguiente elemento de la lista 
     }
 }
-
 
 
 
@@ -299,12 +300,12 @@ void imprime(NodoPtr l)
 /**TIPOS DE FUNCIONES PARA EL EJERCICIO 6**/
 /*Este es como el anterior, lo �nico que hace es liberar la memoria de la estructura*/
 void libera(NodoPtr l)
-{
+{ // simplemeente liberamos la memoria de la lista 
     while (l!=NULL)
     {
         NodoPtr p = l;
         l = l->sig;
-        free(p);
+        free(p); 
     }
 }
 
@@ -318,6 +319,10 @@ void libera(NodoPtr l)
 /*Este tambi�n es m�s o menos sencillo, por lo general nos pide definir un tipo �rbol,
 puede pedirnos tanto binario c�mo general, vamos a ver los tipos*/
 /**Para crear un �rbol general**/
+
+
+// typedef int ELemento; //Esto es lo que se suele poner, pero puede variar dependiendo del tipo de datos que nos pidan, por ejemplo si nos piden operadores, en ese caso se suele poner char *s
+
 struct Nodo
 {
     Elemento elem;                                  //Esta parte puede cambiar si, por ejemplo te piden operadores, en ese caso creas un char *s
@@ -342,6 +347,11 @@ struct ArbolRep
     char * str;
     Arbol izq, der;
 };
+
+
+
+
+
 
 
 
