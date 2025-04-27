@@ -359,9 +359,6 @@ struct ArbolRep
 
 
 
-
-
-
 /**TIPOS DE FUNCIONES PARA EL EJERCICIO 8**/
 /*Por lo general, en este tipo nos van a pedir utilizar el �rbol binario, como por ejemplo indicar el n�mero
 de operadores o numero de operandos, por poner dos ejemplos, vamos a ver los tipos m�s comunes:*/
