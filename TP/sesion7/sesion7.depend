@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1741195374 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion7\sesion7.c
+	"bombo.h"
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+
+1741194684 c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion7\bombo.h
+
+1741195047 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion7\bombo.c
+	"bombo.h"
+	<stdlib.h>
+	<stdio.h>
+

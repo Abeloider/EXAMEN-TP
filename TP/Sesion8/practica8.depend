@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1741795395 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\practica8.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1738771646 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion3\sesion3\sesion3.c
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+

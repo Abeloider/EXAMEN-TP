@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1742573329 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion9\cola.c
+	"cola.h"
+	<stdlib.h>
+
+1742571028 c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion9\cola.h
+
+1742573014 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion9\sesion9.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"cola.c"
+
+1742573329 c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion9\cola.c
+	"cola.h"
+	<stdlib.h>
+

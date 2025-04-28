@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1738168150 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion2\sesion2.c
+	<stdio.h>
+	<math.h>
+	<windows.h>
+
+1738168357 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion2\cruzarse.c
+	<stdio.h>
+	<math.h>
+	<windows.h>
+

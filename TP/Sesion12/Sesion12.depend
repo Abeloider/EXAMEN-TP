@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1744134433 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion12\abb.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"ABB.h"
+
+1744120267 c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion12\abb.h
+
+1744134485 source:c:\users\abel jiang wan\onedrive\escritorio\ingenieria informatica\1 a—o\tp\sesion12\sesion12.c
+	"ABB.h"
+	<stdio.h>
+	<string.h>
+
