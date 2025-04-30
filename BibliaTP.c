@@ -366,9 +366,9 @@ de operadores o numero de operandos, por poner dos ejemplos, vamos a ver los tip
 /*Lo que hace es buscar en los �RBOLES BINARIOS un*/
 int operadores(Arbol a)
 {
-    if (a == NULL)
+    if (a == NULL) return 0; //Caso base, si no hay nada en el arbol no hay operadores
         return 0;
-    if (a->izq==NULL)
+    if (a->izq==NULL)  //Caso base, si no hay nada en el arbol izuqierdo no hay operadores
         return 0;
     return 1+operadores(a->izq)+operadores(a->der);
 }
@@ -411,18 +411,18 @@ double ExpresionValor(Arbol a)
 
 /**Imprimir por pantalla el �rbol binario**/
 /*Este est� sacado de otro ejemplo de examen, por lo que lo mismo, cuidado a la hora de los nombres y definiciones que teng�is en el examen*/
-void imprime(Arbol a)
+void imprime(Arbol a)// 'a' es un puntero al nodo actual que se está procesando.
 {
-    if (a != NULL)
+    if (a != NULL) // Solo hacemos algo si el nodo actual existe (no es un puntero nulo).
     {
         if (a->izq == NULL)
-            printf("%s",a->str);
+            printf("%s",a->str); // imprimimos el operador
         else
         {
-            printf("(");
-            imprime(a->izq);
-            printf("%s",a->str);
-            imprime(a->der);
+            printf("("); // 
+            imprime(a->izq); // imprimimos el subárbol izquierdo
+            printf("%s",a->str); // imprimimos el operador
+            imprime(a->der); // impimimos el subárbol derecho
             printf(")");
         }
     }
@@ -448,20 +448,20 @@ anterior lo llevais al pelo asi q no importa mucho, eso s�, mi recomendaci�n
 /**Liberaci�n de un �rbol binario**/
 void libera(ArbolBinario a) // postorden
 {
-    if (a == NULL) return;
-    libera(a->hijoIzquierdo);
-    libera(a->hijoDerecho);
-    free(a);
+    if (a == NULL) return; // caso base, si no hay nada que liberar no se hace nada
+    libera(a->hijoIzquierdo); // liberamos el hijo izquierdo
+    libera(a->hijoDerecho); // liberamos el hijo derecho
+    free(a); // liberamos el nodo actual
 }
 
 /**Liberaci�n de un �rbol general**/
 /*Se parecen pero en el caso del �rbol general los hijos izquierdos cambian un poco*/
 void libera(ArbolGeneral a)
 {
-    if (a == NULL) return;
-    libera(a->hijoIzquierdo);
-    libera(a->hermanoDerecho);
-    free(a);
+    if (a == NULL) return; // caso base, si no hay nada que liberar no se hace nada
+    libera(a->hijoIzquierdo); // liberamos el hijo izquierdo
+    libera(a->hermanoDerecho); // liberamos el hermano derecho
+    free(a); // liberamos el nodo actual
 }
 
 
@@ -546,7 +546,7 @@ int main()
     raiz->hijoIzquierdo = crea_arbol(1);
     raiz->hijoDerecho = crea_arbol(2);
 
-    /*Llamada a �rboles generales*/
+    /*Llamada a �rboles generales*/ 
     ArbolGeneral raiz = crea_arbol(0);
     raiz->hijoIzquierdo = crea_arbol(1);
     raiz->hijoIzquierdo->hermanoDerecho = crea_arbol(2);
