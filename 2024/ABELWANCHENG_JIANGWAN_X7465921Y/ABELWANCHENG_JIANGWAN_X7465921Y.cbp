@@ -31,6 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ABELWANCHENG_JIANGWAN_X7465921Y.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Linea.h" />
+		<Unit filename="linea.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

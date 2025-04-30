@@ -1,0 +1,43 @@
+ejercicios propuestos (2/4) 
+
+3 implementar en C la funcion media, realizasndo para ello los siguientes pasos 
+
+1. Implementar la función suma la cual devuelve la suma de los nodos del 
+árbol  a. 
+  int suma(ArbolGeneral a){...}
+2. Implementar la función numero la cual devuelve el número de nodos del 
+árbol  a.
+  int numero(ArbolGeneral a){...}
+3. Implementar  la  función  media  usando  las  funciones  suma  y  numero 
+previamente definidas.
+  double media(ArbolGeneral a){...}
+Se asume que el árbol vacio se representa con a=NULL.
+52
+Tecnología  de la Programación
+Tema 5. Estructuras de Datos Enlazadas Arborescentes
+
+
+int suma (ArbolGeneral a) {
+if (a=NULL) {
+    return 0; 
+} 
+    int s1 = suma(a -> izq); 
+    int s2 = suma (a -> der); 
+    return s1+s2+ a->elem; 
+} 
+
+
+ int numero(ArbolGeneral a){
+    
+
+ }
+
+
+
+int media (arbolBinario a) 
+
+{
+    int s = suma(a) ; 
+    int n = numeroa(a); 
+    return (double)s/n; 
+}

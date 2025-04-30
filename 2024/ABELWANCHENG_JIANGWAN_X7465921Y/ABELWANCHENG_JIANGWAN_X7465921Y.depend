@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1746028510 source:c:\users\abel jiang wan\onedrive\escritorio\examen tp\2024\abelwancheng_jiangwan_x7465921y\abelwancheng_jiangwan_x7465921y.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1746023866 source:c:\users\abel jiang wan\onedrive\escritorio\examen tp\2024\abelwancheng_jiangwan_x7465921y\linea.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"Linea.h"
+
+1746022088 c:\users\abel jiang wan\onedrive\escritorio\examen tp\2024\abelwancheng_jiangwan_x7465921y\linea.h
+

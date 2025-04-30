@@ -525,7 +525,7 @@ int main()
     for(int i=0; i<n; i++)
     {
         printf("El numero guardado en la posici�n %d es: %d\n",i+1, v[i]);
-    }
+    
     printf("\n");
 
     //Ejercicio 2
