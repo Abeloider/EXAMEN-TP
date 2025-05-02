@@ -84,19 +84,16 @@ void imprimirEstructura(Estructura l)
     }
 }
 
-void suprimir_negativos(Estructura e)
-{
-    Estructura aux = e;
-    while(aux->sig != NULL){
-        if(aux->sig->elem < 0){
-            Estructura eliminado = aux->sig;
-            aux->sig = eliminado->sig;
-            free(eliminado);
+void suprimir_negativos(Estructura e) {
+    Estructura aux = e;                     // Puntero auxiliar para recorrer la lista
+    while(aux->sig != NULL) {               // Mientras haya nodos siguientes
+        if(aux->sig->elem < 0) {            // Si el siguiente nodo es negativo
+            Estructura eliminado = aux->sig;// Guarda el nodo a eliminar
+            aux->sig = eliminado->sig;      // "Salta" el nodo negativo
+            free(eliminado);                // Libera memoria del nodo eliminado
         } else {
-            aux = aux->sig;  // Avanzar solo si no se elimin�
+            aux = aux->sig;                 // Avanza solo si no se eliminó un nodo
         }
-
-
     }
 }
 
@@ -124,17 +121,16 @@ struct ArbolRep
 };
 
 
-Arbol crea_arbol()
-{
+Arbol crea_arbol() {
     char d[10];
     printf("Introducir numero en arbol(o NULL para no introducir nada en esa rama): ");
-    scanf("%s", d);
-    if(strcmp(d, "NULL")==0) return NULL;
-    Arbol a= malloc(sizeof(struct ArbolRep));
-    a->str = atoi(d); // cambia de string a numero
-    a->izq = crea_arbol();
-    if(a->izq != NULL)
-        a->der = crea_arbol();
+    scanf("%s", d);                           // lee la cadena de string
+    if(strcmp(d, "NULL")==0) return NULL;     // si es null retorna vacio 
+    Arbol a= malloc(sizeof(struct ArbolRep)); // crea el nodo 
+    a->str = atoi(d);                         // cambia de string a numero
+    a->izq = crea_arbol();                    // construye el hijo izquierdo 
+    if(a->izq != NULL)                        // si el hijo izquierdo no es nulo 
+        a->der = crea_arbol();                // construye el hijo derecho 
     return a;
 }
 
@@ -174,14 +170,16 @@ int main () {
     // EJERICICIO 2
 
     printf("\n");
-    int m;
+    int m;      
     printf("Introduce numero m:");
-    scanf("%d", &m);
-
+    scanf("%d", &m);    // leemos el nujmero m>0
+    
+    // 1 creamos la estructura enlazada
     Estructura l = crearEstructura(m);
     printf("Estructura generada:\n");
     imprimirEstructura(l);
 
+    // imprimimos suprimir negavivs 
     suprimir_negativos(l);
     printf("Estructura sin negativos:\n");
     imprimirEstructura(l);
@@ -190,6 +188,7 @@ int main () {
 
     //EJERCICIO 4
 
+    // 1 Crear un árbol binario con nodos: 
     Arbol ab = crea_arbol();
     int b;
     printf("Conteo de numeros mayores que: ");
