@@ -33,11 +33,226 @@ if (a=NULL) {
  }
 
 
-
 int media (arbolBinario a) 
 
 {
     int s = suma(a) ; 
     int n = numeroa(a); 
     return (double)s/n; 
+}
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+deep seek
+
+
+1. Función recorrido_anchura para árbol general:
+
+#include "Cola.h"
+
+void recorrido_anchura(ArbolGeneral a) {
+    if (a == NULL) return;
+    Cola c = Cola_crea();
+    Cola_inserta(c, a);
+    
+    while (!Cola_vacia(c)) {
+        ArbolGeneral nodo = Cola_recupera(c);
+        Cola_suprime(c);
+        printf("%d ", nodo->elem); // Asume Elemento es int
+        
+        // Encolar todos los hijos (hermanos derechos del hijo izquierdo)
+        ArbolGeneral hijo = nodo->hijoIzquierdo;
+        while (hijo != NULL) {
+            Cola_inserta(c, hijo);
+            hijo = hijo->hermanoDerecho;
+        }
+    }
+    Cola_libera(c);
+}
+
+
+
+
+
+
+
+
+
+
+
+2. Funciones para árbol general:
+
+#          SUMA
+
+int suma(ArbolGeneral a) {
+    if (a == NULL) return 0;
+    return a->elem + suma(a->hijoIzquierdo) + suma(a->hermanoDerecho);
+}
+
+#       IMPRIE HOJAS
+
+void imprime_hojas(ArbolGeneral a) {
+    if (a == NULL) return;
+    if (a->hijoIzquierdo == NULL) { // Es hoja
+        printf("%d ", a->elem);
+    }
+    imprime_hojas(a->hijoIzquierdo);
+    imprime_hojas(a->hermanoDerecho);
+}
+
+#           MAYORES
+
+int mayores(ArbolGeneral a, int umbral) {
+    if (a == NULL) return 0;
+    int cont = (a->elem > umbral) ? 1 : 0;
+    return cont + mayores(a->hijoIzquierdo, umbral) + mayores(a->hermanoDerecho, umbral);
+}
+
+
+#           INSERTAR ALFINAL
+
+
+void insertar_al_final(NodoPtr *lista, int elem) {
+    NodoPtr nuevo = malloc(sizeof(struct Nodo));
+    nuevo->elem = elem;
+    nuevo->sig = NULL;
+    
+    if (*lista == NULL) {
+        *lista = nuevo;
+    } else {
+        NodoPtr aux = *lista;
+        while (aux->sig != NULL) aux = aux->sig;
+        aux->sig = nuevo;
+    }
+}
+
+
+
+#               ARBOLTOLISTA
+
+void arbolTolista(ArbolGeneral a, NodoPtr *lista) {
+    if (a != NULL) {
+        insertar_al_final(lista, a->elem);
+        arbolTolista(a->hijoIzquierdo, lista);
+        arbolTolista(a->hermanoDerecho, lista);
+    }
+}
+
+
+
+
+#                MODIFICA
+
+void modifica(ArbolGeneral a, int original, int nuevo_valor) {
+    if (a == NULL) return;
+    if (a->elem == original) a->elem = nuevo_valor;
+    modifica(a->hijoIzquierdo, original, nuevo_valor);
+    modifica(a->hermanoDerecho, original, nuevo_valor);
+}
+
+
+
+#                 NODOS
+
+int nodos(ArbolGeneral a) {
+    if (a == NULL) return 0;
+    return 1 + nodos(a->hijoIzquierdo) + nodos(a->hermanoDerecho);
+}
+
+
+
+
+
+
+
+
+
+
+3. Función media:
+
+
+##               FUNCION MEDIA
+
+int suma(ArbolGeneral a) { // Igual que la implementada anteriormente
+    if (a == NULL) return 0;
+    return a->elem + suma(a->hijoIzquierdo) + suma(a->hermanoDerecho);
+}
+
+int numero(ArbolGeneral a) { // Igual que nodos()
+    if (a == NULL) return 0;
+    return 1 + numero(a->hijoIzquierdo) + numero(a->hermanoDerecho);
+}
+
+double media(ArbolGeneral a) {
+    int total = suma(a);
+    int cant = numero(a);
+    return (cant == 0) ? 0 : (double)total / cant;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. Función ordena usando ABB:
+Modificación del ABB para permitir duplicados (cambiar en ABBInserta):
+
+
+void ABBInserta(ABB *a, Elemento e) {
+    if (*a == NULL) {
+        *a = malloc(sizeof(struct ABBRep));
+        (*a)->elem = e;
+        (*a)->izq = NULL;
+        (*a)->der = NULL;
+        return;
+    }
+    if (e <= (*a)->elem) { // Permite duplicados a la izquierda
+        ABBInserta(&((*a)->izq), e);
+    } else {
+        ABBInserta(&((*a)->der), e);
+    }
+}
+Función inorden para construir la lista ordenada:
+
+
+void inorden_aux(ABB a, NodoPtr *lista) {
+    if (a != NULL) {
+        inorden_aux(a->izq, lista);
+        insertar_al_final(lista, a->elem);
+        inorden_aux(a->der, lista);
+    }
+}
+
+NodoPtr inorden(ABB a) {
+    NodoPtr lista = NULL;
+    inorden_aux(a, &lista);
+    return lista;
+}
+
+NodoPtr ordena(NodoPtr l) {
+    ABB arbol = ABBCrea();
+    // Insertar elementos de la lista en el ABB
+    NodoPtr aux = l;
+    while (aux != NULL) {
+        ABBInserta(&arbol, aux->elem);
+        aux = aux->sig;
+    }
+    // Construir lista ordenada
+    NodoPtr lista_ordenada = inorden(arbol);
+    ABBLibera(arbol);
+    return lista_ordenada;
 }

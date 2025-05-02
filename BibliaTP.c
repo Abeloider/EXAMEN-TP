@@ -155,12 +155,6 @@ NodoPtr VectorEnterosOrdenado(int *v,int n)      //Declaramos un tipo estructura
 
 
 
-
-
-
-
-
-
 /**POSIBLES FUNCIONES PARA EL EJERCICIO 4**/
 /*En el ejercicio 4 suele pedir suprimir o insertar elementos en la lista, vamos a ver esto con m�s detalle
 porque son bastantes casos.*/
@@ -204,6 +198,22 @@ void suprime_ultimo_par(NodoPtr e)
         free(borrar);
     }
 }
+
+// suprime_los negativos
+void suprimir_negativos(Estructura e)
+{
+    Estructura aux = e;
+    while(aux->sig != NULL){
+        if(aux->sig->elem < 0){ // en el caso de que positivo seria >= 0
+            Estructura eliminado = aux->sig;
+            aux->sig = eliminado->sig;
+            free(eliminado);
+        } else {
+            aux = aux->sig;  // Avanzar solo si no se elimin�
+        }
+    }
+}
+
 
 /**Vamos ahora a las eliminaciones de elementos en s�, son las siguientes:**/
 /*Estas no tienen mucha vuelta, son lo que son*/
@@ -265,9 +275,6 @@ void suprime_todos(NodoPtr l, Elemento dato)
 /**IMPORTANTE**/ /*En el tipo de ejercicio 4 puede que hayan m�s funciones, pero dudo que vaya a pedirlas, si eso ocurre mirad las diapositivas,
 si no est�n en la parte de los apuntes seguramente est�n en los ejercicios, o si no intentad, a partir del enunciado combinar algunas como ocurre
 con las otras dos*/
-
-
-
 
 
 
@@ -435,10 +442,6 @@ void imprime(Arbol a)// 'a' es un puntero al nodo actual que se está procesando
 
 
 
-
-
-
-
 /**IMPORTANTE**/ /*De momento no he visto m�s tipos en los que te pueda pedir cosas en el ejercicio 8, no obstante seguramente nos pida otra cosa, en ese
 caso, o se reza, o se intenta buscar en las diapositivas algo que cuadre, aunque a este punto del examen seguramente est�is aprobad�simos si lo
 anterior lo llevais al pelo asi q no importa mucho, eso s�, mi recomendaci�n es buscar cosas en las diapositvas, que no se pierde nada*/
@@ -550,6 +553,45 @@ int main()
     ArbolGeneral raiz = crea_arbol(0);
     raiz->hijoIzquierdo = crea_arbol(1);
     raiz->hijoIzquierdo->hermanoDerecho = crea_arbol(2);
+
+
+    // Crear un árbol binario con 7 nodos:
+    //        10
+    //       /  \
+    //      5    15
+    //     / \    \
+    //    3   7    20
+    //   /
+    //  1
+
+    // Crear nodos
+    ArbolBinario raiz = crea_nodo(10);
+    raiz->hijoIzquierdo = crea_nodo(5);
+    raiz->hijoDerecho = crea_nodo(15);
+    
+    raiz->hijoIzquierdo->hijoIzquierdo = crea_nodo(3);
+    raiz->hijoIzquierdo->hijoDerecho = crea_nodo(7);
+    
+    raiz->hijoDerecho->hijoDerecho = crea_nodo(20);
+    
+    raiz->hijoIzquierdo->hijoIzquierdo->hijoIzquierdo = crea_nodo(1);
+
+    // Recorrer para verificar
+    printf("Recorrido preorden (binario): ");
+    preorden(raiz); // Salida: 10 5 3 1 7 15 20
+
+    libera_arbol(raiz);
+    return 0;
+
+
+
+    /* en el caso de imprimir el arbol binario mano a mano 
+    Arbol ab = crea_arbol();
+    int b;
+    printf("Conteo de numeros mayores que: ");
+    scanf("%d", &b);
+    printf("Numeros mayores que %d en el arbol: %d", b, mayores(ab, b));
+    */
 
     return 0;
 }

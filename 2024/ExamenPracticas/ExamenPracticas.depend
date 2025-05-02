@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1745935903 source:c:\users\anton\documents\tp\examenpracticas\linea.c
+	<stdlib.h>
+	"Linea.h"
+
+1745935524 c:\users\anton\documents\tp\examenpracticas\linea.h
+
+1745936884 source:c:\users\anton\documents\tp\examenpracticas\examen.c
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<string.h>
+

@@ -41,21 +41,7 @@ suprimir_negativos.
 – Imprimir en pantalla de nuevo los elementos de la estructura de datos enlazada e.
 – Liberar la estructura de datos enlazada e.
 
-*/
-
-/*
-    typedef struct Estructura * EstructuraPtr;
-    struct Estructura
-    {
-        int m;
-        struct Estructura * e;
-    };
-
-// Suprime los números negativos de la estructura de datos
-// enlazada e.
-
-    void suprimir_negativos(EstructuraPtr p) {
-
+   void suprimir_negativos(EstructuraPtr p) { // podemso hacer esto tambien que es lo mismo
         while((p->e!=NULL) && (p->e->m >= 0))
         {
             p = p->e;
@@ -65,21 +51,13 @@ suprimir_negativos.
     free(eliminado);
     };
 
-    void imprimirEstructura(EstructuraPtr l)
-{
-    EstructuraPtr aux=l->e;
-    while(aux != NULL)
-    {
-        printf("%d ", aux->m);
-        aux = aux->e;
-    }
-}
+
 */
 
 typedef struct EstructuraRep * Estructura;
 struct EstructuraRep{
     int elem;
-    Estructura sig;
+    Estructura sig; // que es lo mismo que: struct EstructuraRep *sig;
 };
 
 Estructura crearEstructura(int m)
@@ -217,6 +195,5 @@ int main () {
     printf("Conteo de numeros mayores que: ");
     scanf("%d", &b);
     printf("Numeros mayores que %d en el arbol: %d", b, mayores(ab, b));
-
     return 0;
 }

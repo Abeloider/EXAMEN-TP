@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1746144208 source:c:\users\abel jiang wan\onedrive\escritorio\examen tp\2024\junio2024\junio-julio2024.c
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
